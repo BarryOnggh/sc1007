@@ -76,9 +76,36 @@ class LinkedList:
         self.size = 0
 
 def moveMaxToFront(ll):
-   # write your code here #
+    #while not at the end
+    #first number
+    #compare with every other number
+    #if a number greater, swap positions, loop again
+    #terminate if reach the end
+
+    current = ll.head
+    
+    i=1
+    while i<ll.size:
+        current_value=ll.findNode(i).item
+        if current.item<current_value:
+            ll.removeNode(i)
+            ll.insertNode(current.item, i)
+            ll.removeNode(0)
+            ll.insertNode(current_value,0)
+            i+=1
+        else:
+            i+=1
+        
+    return ll
+            
+
+
+
+
+   
 
 if __name__ == "__main__":
+
     ll = LinkedList()
 
     while True:

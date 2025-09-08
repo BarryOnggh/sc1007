@@ -76,7 +76,26 @@ class LinkedList:
         self.size = 0
 
 def remove_duplicates_sorted_ll(ll):
-    # write your code here #
+    #for loop/while loop
+    #compare itself and neighbour
+    #if same, delete neighbour, adjust pointer to point to neighbour neighbour
+    #index + 1
+
+    i=1
+
+    current = ll.head
+
+    while current is not None and current.next is not None:
+        if current.item==current.next.item:
+            current.next=current.next.next
+            ll.size-=1
+        else:
+            current = current.next
+    
+    return ll
+
+
+    
 
 if __name__ == "__main__":
     ll = LinkedList()
