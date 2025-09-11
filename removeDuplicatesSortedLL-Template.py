@@ -76,23 +76,24 @@ class LinkedList:
         self.size = 0
 
 def remove_duplicates_sorted_ll(ll):
-    #for loop/while loop
-    #compare itself and neighbour
-    #if same, delete neighbour, adjust pointer to point to neighbour neighbour
-    #index + 1
+    #compare frame i and i+1
+    #if similar, remove index i+1
+    #else, move window forward
+    #until i+1 == ll.size
 
-    i=1
+    #might not even need to declare first node
 
-    current = ll.head
-
-    while current is not None and current.next is not None:
-        if current.item==current.next.item:
-            current.next=current.next.next
-            ll.size-=1
+    i=0
+    while i < ll.size-1:
+        first_node_in_window=ll.findNode(i)
+        second_node_in_window=ll.findNode(i+1)
+        if first_node_in_window.item==second_node_in_window.item:
+            ll.removeNode(i+1)
         else:
-            current = current.next
-    
+            i+=1
     return ll
+
+
 
 
     
