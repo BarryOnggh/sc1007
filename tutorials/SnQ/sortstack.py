@@ -98,13 +98,37 @@ class Stack:
 
 # Function to sort a stack in ascending order [cite: 47]
 def sort_stack(stack):
-    # TODO: Write your code here
-    # 1. Create a temporary stack.
-    # 2. While the input stack is not empty, pop an element `tmp`.
-    # 3. While the temporary stack is not empty and its top element is greater than `tmp`,
-    #    pop from the temporary stack and push it back to the input stack.
-    # 4. Push `tmp` to the temporary stack.
-    # 5. After the main loop, the temporary stack is sorted. Move all elements back to the original stack.
+    #temp
+    #if empty, put variable in temp stack
+    #if temp greater than item in temp stack, put temp in
+    #else, move items in temp stack back, put temp in first
+    #do until input stack is empty
+    input_stack = stack
+    temp_stack = Stack()
+
+    while not input_stack.isEmpty():
+        if temp_stack.isEmpty():
+            temp_stack.push(input_stack.pop())
+        current_value=input_stack.pop()
+        if temp_stack.peek()<current_value:
+            temp_stack.push(current_value)
+        else:
+            while not temp_stack.isEmpty():
+                input_stack.push(temp_stack.pop())
+            temp_stack.push(current_value)
+    
+    while not temp_stack.isEmpty():
+        input_stack.push(temp_stack.pop())
+    
+    return input_stack
+
+        
+
+
+
+
+
+
     pass
 
 # Main program execution
