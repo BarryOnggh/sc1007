@@ -76,27 +76,21 @@ class LinkedList:
         self.size = 0
 
 def moveEvenItemsToBack(ll):
-
-    if ll.size < 2:
-        return
     #iterate through list
-    #when find even,
-    #remove node
-    #put node in the back
+    #if even
+    #move to back
+    indexer = 0
+    size = ll.size
 
-    
-    
     for i in range(ll.size):
-        current=ll.findNode(i)
-
-        if current.item % 2 ==0:
-            even_value = current.item
-            ll.removeNode(i)
-            ll.insertNode(even_value,ll.size)
+        current_value = ll.findNode(indexer).item
+        if current_value%2==0:
+            ll.insertNode(current_value,size)
+            ll.removeNode(indexer)
         else:
-            i+=1
-        
-    return ll
+            indexer += 1
+
+
 
 
 

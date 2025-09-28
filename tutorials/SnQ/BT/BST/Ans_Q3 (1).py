@@ -14,15 +14,17 @@ class Stack:
         self.top = None
 
 def preOrderIterative(root):
+    #preorder: root left right
+    #
 
     s = Stack()
-    temp = root
+    enterer = root
 
-    push(s,temp)
+    push(s,enterer)
 
     while not isEmpty(s):
         temp = pop(s)
-        print(temp.item, end=" ")
+        print(temp.item)
         if temp.right:
             push(s,temp.right)
         if temp.left:

@@ -49,7 +49,34 @@ def peek(stack):
     return None
 
 def postOrderIterativeS1(root):
-# Write your code here #
+    if root == None:
+        return
+    s = Stack()
+    current = root
+
+    while not is_empty(s) and current:
+        if current:
+            push(s,current)
+            current = current.left
+        else:
+            
+        
+
+
+    
+
+
+    #left right root
+    #traverse to the leftmost node
+    #peek at node on top of stack
+    # if right child exists and havent been visited yet, move to right subtree
+    #if no right child or has been visited, print
+
+
+
+
+
+
 
 if __name__ == "__main__":
    root = None

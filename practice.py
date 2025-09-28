@@ -49,49 +49,40 @@ class LinkedList:
         print("None")
 
 def moveMinNode(head):
+    #create list of even
+    #scan through list to find even
+    #if even, push to back of the list
+
+    list_of_even = []
+
     current = head
-    min_value=head.data
 
     while current:
-        if min_value>current.data:
-            min_value=current.data
-        current.next
+        if current.data%2==0:
+            list_of_even.append(current.data)
     
-    #loop through
-    #if same as the thing
-    #not so sure about the order of operations
+    #if element in list
+    #move to back
+    #
+
     current = head
     prev = None
+    node_back = head
 
-    while current:
-        node_to_record = current.next
-        if min_value==current.data:
-            if prev:
+    for i in list_of_even:
+        while current:
+            node_back = head
+            node_to_continue = current.next
+            if i == current.data:
                 prev.next = current.next
-                current.next = head
-                head = current
-        else: 
-            prev = current
-        current = node_to_record
-
-
-
-
-
-
-
-
-        
-
-
+                while node_back:
+                    node_back = node_back.next
+                node_back.next = current
+            else:
+                prev = current
+            current = node_to_continue
     
-
-
-    #find minimum VALUE in first pass
-    # loop throguh
-
-    #put all same minimum in second pass
-
+    return head
 
 
 
@@ -99,21 +90,23 @@ def moveMinNode(head):
 if __name__ == "__main__":
     linked_list = LinkedList()
     
-    print("Enter a list of numbers, terminated by any non-digit character: ", end="")
-    input_string = input()
+    # A simpler way to get input for testing
+    input_string = input("Enter a list of numbers separated by spaces: ")
     numbers = input_string.split()
     
-    counter = 0
-    for num in numbers:
+    for num_str in numbers:
         try:
-            linked_list.insertNode(int(num), counter)
-            counter += 1
+            num = int(num_str)
+            # Always insert at the end to maintain order
+            linked_list.insertNode(num, linked_list.size)
         except ValueError:
-            break
+            print(f"'{num_str}' is not a valid integer. Skipping.")
     
     print("\nBefore:", end=" ")
     linked_list.printList()
     
+    # Call the function and update the list's head with the returned new head
     linked_list.head = moveMinNode(linked_list.head)
-    print("After:", end=" ")
+    
+    print("After: ", end=" ")
     linked_list.printList()
