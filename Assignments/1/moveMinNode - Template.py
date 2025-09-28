@@ -49,34 +49,32 @@ class LinkedList:
         print("None")
 
 def moveMinNode(head):
-    current = head
-    min_value=head.data
+    if head is None or head.next is None:
+        return head
+    
+    min_value = head.data
+    current = head.next
 
-    while current:
+    while current is not None:
         if min_value>current.data:
             min_value=current.data
-        current.next
-    
-    #loop through
-    #if same as the thing
-    #not so sure about the order of operations
-    current = head
+        current=current.next
+
     prev = None
+    current = head
 
-    while current:
-        node_to_record = current.next
-        if min_value==current.data:
-            if prev:
-                prev.next = current.next
-                current.next = head
-                head = current
-        else: 
+    while current is not None:
+        if current.data == min_value and prev is not None:
+            node_to_move = current
+            prev.next = current.next
+            node_to_move.next = head
+            head = node_to_move
+            current = prev.next
+        else:
             prev = current
-        current = node_to_record
-
-
-
-
+            current = current.next
+    
+    return head
 
 
 
