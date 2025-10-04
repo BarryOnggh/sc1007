@@ -76,7 +76,23 @@ def removeAll(node):
        node = None
 
 def identical(tree1, tree2):
-# Write your code here #
+    """
+    Recursively checks if two binary trees are structurally identical.
+    Two trees are identical if they have the same data and the arrangement
+    of data is also the same.
+    """
+    # 1. Both are empty
+    if tree1 is None and tree2 is None:
+        return True
+
+    # 2. Both are non-empty -> Compare them
+    if tree1 is not None and tree2 is not None:
+        return ((tree1.item == tree2.item) and
+                identical(tree1.left, tree2.left) and
+                identical(tree1.right, tree2.right))
+
+    # 3. One is empty, one is not -> False
+    return False
 
 if __name__ == "__main__":
    root1 = None

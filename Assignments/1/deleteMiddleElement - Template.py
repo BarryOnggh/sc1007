@@ -102,23 +102,25 @@ class Stack:
         self.ll.printList()
 
 def deleteMiddleElement(s):
-    if s.getSize() is 1 or 0:
-        return s
-    
-    temp = Stack()
-    middle_element_position = s.getSize()//2
+    #find total number in the stack
+    #pop and push up to that number
+    #then push back
 
-    for i in range(middle_element_position):
+    temp = Stack()
+
+    halfway_point = s.getSize()//2
+
+    for i in range(halfway_point):
         temp.push(s.pop())
+    
     s.pop()
 
-    while not s.isEmpty():
-        temp.push(s.pop())
-    
     while not temp.isEmpty():
         s.push(temp.pop())
 
-    return s
+    return 
+
+
 
 
 # write your code here #

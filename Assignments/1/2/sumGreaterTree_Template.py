@@ -55,14 +55,30 @@ class BinaryTree:
             self._printBTNode(node.left, space, 1)   # left child
             self._printBTNode(node.right, space, 0)  # right child
 
+    def _sumGreaterTree(self, node, current_sum):
+        """
+        Helper function to perform reverse in-order traversal (Right, Root, Left).
+        'current_sum' is a list used as a mutable integer to hold the running total.
+        """
+        if node is not None:
+            # Traverse the right subtree first
+            self._sumGreaterTree(node.right, current_sum)
+            
+            # Update the running sum and the current node's value
+            current_sum[0] += node.data
+            node.data = current_sum[0]
+            
+            # Traverse the left subtree
+            self._sumGreaterTree(node.left, current_sum)
+
     def sumGreaterTree(self):
-      #  if self.root is None:
-      #      return
-      #  else:
-      #      sum = 0
-      #      self._sumGreaterTree(self.root, sum)
-
-
+        """
+        Transforms the BST by replacing each node's value with the sum of all
+        values greater than or equal to it.
+        """
+        # We use a list with one element to simulate passing an integer by reference.
+        running_sum = [0]
+        self._sumGreaterTree(self.root, running_sum)
 
 bt = BinaryTree()
 

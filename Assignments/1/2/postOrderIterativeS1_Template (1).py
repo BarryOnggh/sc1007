@@ -49,28 +49,42 @@ def peek(stack):
     return None
 
 def postOrderIterativeS1(root):
-    if root == None:
+    if not root:
         return
+
     s = Stack()
     current = root
+    last_visited = None
 
-    while not is_empty(s) and current:
-        if current:
+    while not is_empty(s) or current:
+        while current:
             push(s,current)
             current = current.left
-        else:
-            
         
+        popped_node = peek(s)
+        
+        if popped_node.right and popped_node is not last_visited:
+            current = popped_node.right
+        else:
+            popped_node = pop(s)
+            print(popped_node,end=" ")
+            last_visited = popped_node
+
+
+
+
+
 
 
     
 
 
-    #left right root
-    #traverse to the leftmost node
-    #peek at node on top of stack
-    # if right child exists and havent been visited yet, move to right subtree
-    #if no right child or has been visited, print
+
+        
+
+        
+
+
 
 
 

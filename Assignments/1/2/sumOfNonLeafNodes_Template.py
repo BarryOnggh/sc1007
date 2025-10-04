@@ -25,7 +25,21 @@ def inorderRecursive(root):
 
 
 def sumOfNonLeafNodes(root):
-  # Write your code here #
+    """
+    Recursively calculates the sum of all nodes that are not leaves.
+    A non-leaf node has at least one child (left or right).
+    """
+
+
+
+
+
+    # Base case: if the node is null or a leaf node, it doesn't contribute to the sum.
+    if root is None or (root.left is None and root.right is None):
+        return 0
+
+    # If the node is a non-leaf node, add its value to the sum of its subtrees.
+    return root.data + sumOfNonLeafNodes(root.left) + sumOfNonLeafNodes(root.right)
 
 if __name__ == "__main__":
     root = None

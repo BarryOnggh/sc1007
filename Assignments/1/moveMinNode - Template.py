@@ -63,18 +63,30 @@ def moveMinNode(head):
     prev = None
     current = head
 
-    while current is not None:
+    while current:
         if current.data == min_value and prev is not None:
             node_to_move = current
+            #patch things
             prev.next = current.next
             node_to_move.next = head
             head = node_to_move
-            current = prev.next
-        else:
-            prev = current
             current = current.next
+        else:
+
+
+
+    # while current is not None:
+    #     if current.data == min_value and prev is not None:
+    #         node_to_move = current
+    #         prev.next = current.next
+    #         node_to_move.next = head
+    #         head = node_to_move
+    #         current = prev.next
+    #     else:
+    #         prev = current
+    #         current = current.next
     
-    return head
+    # return head
 
 
 

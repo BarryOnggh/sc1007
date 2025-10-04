@@ -44,7 +44,29 @@ def is_empty(stack):
    return stack.top is None
 
 def postOrderIterativeS2(root):
-# Write your code here #
+    if root is None:
+        return
+
+    # Create two stacks
+    s1 = Stack()
+    s2 = Stack()
+
+    push(s1,root)
+
+    while not is_empty(s1):
+        popped_node = pop(s1)
+        push(s2, popped_node)
+
+        if popped_node.left:
+            push(s1,popped_node.left)
+        if popped_node.right:
+            push(s1,popped_node.right)
+    # s2 checks if stack, not if stack is empty
+    while not is_empty(s2):
+        node_to_print = pop(s2)
+        print(node_to_print.data, end = " ")
+
+        
 
 if __name__ == "__main__":
    root = None
